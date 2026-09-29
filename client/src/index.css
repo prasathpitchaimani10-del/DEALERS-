@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: hsl(0, 0%, 8%);
+    background-color: hsl(0, 0%, 98%);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background-color: hsl(24, 75%, 48%);
+    color: white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white font-medium px-6 py-3 rounded-lg
+    transition-all duration-200 ease-out
+    hover:bg-primary-hover hover:-translate-y-[1px]
+    hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)]
+    active:translate-y-0 active:shadow-none
+    disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply border border-border text-text-primary font-medium px-6 py-3 rounded-lg
+    transition-all duration-200 ease-out bg-transparent
+    hover:bg-background-secondary hover:-translate-y-[1px]
+    hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]
+    active:translate-y-0;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-xl
+    transition-all duration-300 ease-out
+    hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:scale-[1.01];
+  }
+
+  .input-field {
+    @apply w-full border border-border rounded-lg px-4 py-3 text-text-primary
+    bg-surface outline-none transition-all duration-200
+    focus:border-primary focus:ring-[3px] focus:ring-primary-light
+    placeholder:text-text-tertiary;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl text-text-primary tracking-tight-heading;
+  }
+
+  .label-text {
+    @apply text-xs font-medium uppercase tracking-wide-label text-text-secondary;
+  }
+
+  .page-container {
+    @apply max-w-content mx-auto px-6 md:px-12 lg:px-16;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-placed { @apply bg-blue-100 text-blue-800; }
+  .badge-confirmed { @apply bg-orange-100 text-orange-800; }
+  .badge-shipped { @apply bg-purple-100 text-purple-800; }
+  .badge-delivered { @apply bg-green-100 text-green-800; }
+  .badge-cancelled { @apply bg-red-100 text-red-800; }
+  .badge-pending { @apply bg-yellow-100 text-yellow-800; }
+  .badge-completed { @apply bg-green-100 text-green-800; }
+}
+
+@layer utilities {
+  .glass-nav {
+    backdrop-filter: blur(12px);
+    background-color: rgba(250, 250, 250, 0.85);
+  }
+
+  .product-image-zoom {
+    @apply overflow-hidden;
+  }
+
+  .product-image-zoom img {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .product-image-zoom:hover img {
+    transform: scale(1.05);
+  }
+
+  .skeleton {
+    @apply bg-background-secondary rounded animate-pulse;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 95%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 80%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0, 0%, 65%);
+}
